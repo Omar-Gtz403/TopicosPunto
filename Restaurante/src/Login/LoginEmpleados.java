@@ -125,7 +125,21 @@ public class LoginEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    char  clave []=jpassClave.getPassword();
+    String clavedef=new String(clave);
     
+    if (txtUsuario.getText().equals("Administracion") && clavedef.equals("12345")){
+        this.dispose();
+        JOptionPane.showMessageDialog(null,"Bienvenido\n" + "Has ingresado satisfactoriamente al sistema",  "Mensaje de Bienvenida",JOptionPane.INFORMATION_MESSAGE);
+        
+        
+       NewJFrame1 formformulario1= new NewJFrame1();
+        formformulario1.setVisible(true);
+    }else {
+        JOptionPane.showMessageDialog(null,"Acceso denegado:\n"  +  "Porfavor ingrese un usuario y/o contraseña correctos", "Acceso denegado",JOptionPane.ERROR_MESSAGE);
+        
+    
+    }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
