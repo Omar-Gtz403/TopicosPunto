@@ -4,6 +4,7 @@
  */
 package Pantallas;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -135,6 +136,7 @@ public class LoginEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+       btnIngresar.setBackground(Color.red);
         char clave[] = jpassClave.getPassword();
         String clavedef = new String(clave);
 
@@ -143,6 +145,7 @@ public class LoginEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bienvenido\n" + "Has ingresado satisfactoriamente al sistema", "Mensaje de Bienvenida", JOptionPane.INFORMATION_MESSAGE);
             PantallaPrincipal formformulario1 = new PantallaPrincipal();
             formformulario1.setVisible(true);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Acceso denegado:\n" + "Porfavor ingrese un usuario y/o contraseña correctos", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
 
