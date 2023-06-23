@@ -4,6 +4,10 @@
  */
 package Pantallas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 /**
  *
  * @author User
@@ -15,6 +19,55 @@ public class Entradas extends javax.swing.JFrame {
      */
     public Entradas() {
         initComponents();
+    }
+    public String bd = "escuela";
+    public String user = "root";
+    public String pwd = "";
+    public String url = "jdbc:mysql://localhost/restaurant";
+    public String driver = "com.mysql.cj.jdbc.Driver";
+    Connection conn = null;
+    Statement stmt = null;
+
+    public void Seleccion() {
+        try {
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url, user, pwd);
+            System.out.println("Conexion exitosa");
+            if (Consome.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (6, 'Consome', 60)";
+                stmt.executeUpdate(query1);
+                Consome.setSelected(false);
+
+            }
+            if (Camaron.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (7, 'Camaron', 110)";
+                stmt.executeUpdate(query1);
+                Camaron.setSelected(false);
+            }
+            if (CamaronP.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (8, 'Camaron Pelado', 175)";
+                stmt.executeUpdate(query1);
+                CamaronP.setSelected(false);
+            }
+            if (Sopa.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (9, 'Sopa de mariscos', 250)";
+                stmt.executeUpdate(query1);
+                Sopa.setSelected(false);
+            }
+            if (Campechano.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (10, 'Campechano', 190)";
+                stmt.executeUpdate(query1);
+                Campechano.setSelected(false);
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+
     }
 
     /**
@@ -37,193 +90,169 @@ public class Entradas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        Consome = new javax.swing.JCheckBox();
+        Camaron = new javax.swing.JCheckBox();
+        CamaronP = new javax.swing.JCheckBox();
+        Sopa = new javax.swing.JCheckBox();
+        Campechano = new javax.swing.JCheckBox();
         jLabel18 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jPanel1.setBackground(new java.awt.Color(147, 118, 224));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel1.setText("CAMARÓN");
         jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 177, 178, -1));
+        jLabel1.getAccessibleContext().setAccessibleName("");
 
         jLabel3.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel3.setText("CONSOMÉ");
         jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 130, 178, -1));
+        jLabel3.getAccessibleContext().setAccessibleName("");
 
         jLabel4.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel4.setText("CAMARÓN PELADO");
         jLabel4.setOpaque(true);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 216, 178, -1));
+        jLabel4.getAccessibleContext().setAccessibleName("");
 
         jLabel5.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel5.setText("SOPA DE MARISCOS");
         jLabel5.setOpaque(true);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 255, 178, -1));
+        jLabel5.getAccessibleContext().setAccessibleName("");
 
         jLabel6.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel6.setText("CAMPECHANO");
         jLabel6.setOpaque(true);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 298, 178, -1));
+        jLabel6.getAccessibleContext().setAccessibleName("");
 
         jLabel8.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel8.setText("$60");
         jLabel8.setOpaque(true);
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 129, 77, -1));
 
         jLabel9.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel9.setText("$110");
         jLabel9.setOpaque(true);
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 177, 77, -1));
 
         jLabel10.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel10.setText("$175");
         jLabel10.setOpaque(true);
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 216, 77, -1));
 
         jLabel11.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel11.setText("$250");
         jLabel11.setOpaque(true);
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 255, 77, -1));
 
         jLabel12.setFont(new java.awt.Font("Ebrima", 0, 14)); // NOI18N
         jLabel12.setText("$190");
         jLabel12.setOpaque(true);
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 298, 77, -1));
 
-        jCheckBox1.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox1.setText("AGREGAR");
+        Consome.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Consome.setText("AGREGAR");
+        jPanel1.add(Consome, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 129, -1, -1));
 
-        jCheckBox2.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox2.setText("AGREGAR");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        Camaron.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Camaron.setText("AGREGAR");
+        Camaron.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                CamaronActionPerformed(evt);
             }
         });
+        jPanel1.add(Camaron, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 172, -1, -1));
 
-        jCheckBox3.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox3.setText("AGREGAR");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        CamaronP.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        CamaronP.setText("AGREGAR");
+        CamaronP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                CamaronPActionPerformed(evt);
             }
         });
+        jPanel1.add(CamaronP, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 215, -1, -1));
 
-        jCheckBox4.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox4.setText("AGREGAR");
+        Sopa.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Sopa.setText("AGREGAR");
+        jPanel1.add(Sopa, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 254, -1, -1));
 
-        jCheckBox5.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox5.setText("AGREGAR");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        Campechano.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Campechano.setText("AGREGAR");
+        Campechano.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                CampechanoActionPerformed(evt);
             }
         });
+        jPanel1.add(Campechano, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 297, -1, -1));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fish1.png"))); // NOI18N
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 13, -1, -1));
 
         jLabel7.setBackground(new java.awt.Color(232, 147, 207));
         jLabel7.setFont(new java.awt.Font("Ebrima", 3, 36)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Entradas");
         jLabel7.setOpaque(true);
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 13, 264, -1));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fish.png"))); // NOI18N
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 13, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)))
-                .addContainerGap(65, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel7))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel9)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel10))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel11))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel12)))
-                    .addComponent(jLabel8))
-                .addContainerGap(188, Short.MAX_VALUE))
-        );
+        jButton1.setText("Agregar Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, -1, -1));
 
-        jLabel1.getAccessibleContext().setAccessibleName("");
-        jLabel3.getAccessibleContext().setAccessibleName("");
-        jLabel4.getAccessibleContext().setAccessibleName("");
-        jLabel5.getAccessibleContext().setAccessibleName("");
-        jLabel6.getAccessibleContext().setAccessibleName("");
+        jMenu5.setText("Inicio");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu5);
 
-        jMenu1.setText("Menú");
+        jMenu2.setText("Bebidas");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
 
-        jMenuItem1.setText("Cocteles");
-        jMenu1.add(jMenuItem1);
+        jMenu3.setText("Cocteles");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
-        jMenuBar1.add(jMenu1);
+        jMenu6.setText("Platos Fuertes");
+        jMenu6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -235,23 +264,51 @@ public class Entradas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void CamaronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CamaronActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_CamaronActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void CamaronPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CamaronPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_CamaronPActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void CampechanoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampechanoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_CampechanoActionPerformed
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        this.dispose();
+        new PantallaPrincipal().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        this.dispose();
+        new Bebidas().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.dispose();
+        new Cocteles().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jMenu6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6MouseClicked
+        this.dispose();
+        new PlatosFuertes().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu6MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Seleccion();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,11 +347,12 @@ public class Entradas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox Camaron;
+    private javax.swing.JCheckBox CamaronP;
+    private javax.swing.JCheckBox Campechano;
+    private javax.swing.JCheckBox Consome;
+    private javax.swing.JCheckBox Sopa;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -308,9 +366,11 @@ public class Entradas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

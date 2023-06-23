@@ -5,11 +5,83 @@
  */
 package Pantallas;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 /**
  *
  * @author enano
  */
 public class PlatosFuertes extends javax.swing.JFrame {
+
+    public String bd = "escuela";
+    public String user = "root";
+    public String pwd = "";
+    public String url = "jdbc:mysql://localhost/restaurant";
+    public String driver = "com.mysql.cj.jdbc.Driver";
+    Connection conn = null;
+    Statement stmt = null;
+
+    public void Seleccion() {
+        try {
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url, user, pwd);
+            System.out.println("Conexion exitosa");
+            if (FileteF.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (11, 'Filete frito', 50)";
+                stmt.executeUpdate(query1);
+                FileteF.setSelected(false);
+
+            }
+            if (FileteC.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (12, 'Filete con camaron', 60)";
+                stmt.executeUpdate(query1);
+                FileteC.setSelected(false);
+            }
+            if (FileteA.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (13, 'Filete con arroz y papas', 60)";
+                stmt.executeUpdate(query1);
+                FileteA.setSelected(false);
+            }
+            if (PescadoR.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (14, 'Pescado relleno', 200)";
+                stmt.executeUpdate(query1);
+                PescadoR.setSelected(false);
+            }
+            if (PescadoE.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (15, 'Pescado enchilado', 180)";
+                stmt.executeUpdate(query1);
+                PescadoE.setSelected(false);
+            }
+            if (PescadoEM.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (16, 'Pescado empapelado', 150)";
+                stmt.executeUpdate(query1);
+                PescadoEM.setSelected(false);
+            }
+            if (Mojarra.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (17, 'Mojarra', 190)";
+                stmt.executeUpdate(query1);
+                Mojarra.setSelected(false);
+            }
+            if (Piña.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (18, 'Piña rellena', 210)";
+                stmt.executeUpdate(query1);
+                Piña.setSelected(false);
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+
+    }
 
     /**
      * Creates new form NewJFrame
@@ -44,19 +116,23 @@ public class PlatosFuertes extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
+        FileteF = new javax.swing.JCheckBox();
+        FileteC = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
-        jCheckBox9 = new javax.swing.JCheckBox();
-        jCheckBox10 = new javax.swing.JCheckBox();
+        FileteA = new javax.swing.JCheckBox();
+        PescadoR = new javax.swing.JCheckBox();
+        PescadoE = new javax.swing.JCheckBox();
+        PescadoEM = new javax.swing.JCheckBox();
+        Mojarra = new javax.swing.JCheckBox();
+        Piña = new javax.swing.JCheckBox();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,19 +204,19 @@ public class PlatosFuertes extends javax.swing.JFrame {
         jLabel17.setText("$190");
         jLabel17.setOpaque(true);
 
-        jCheckBox3.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox3.setText("AGREGAR");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        FileteF.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        FileteF.setText("AGREGAR");
+        FileteF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                FileteFActionPerformed(evt);
             }
         });
 
-        jCheckBox4.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox4.setText("AGREGAR");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        FileteC.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        FileteC.setText("AGREGAR");
+        FileteC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                FileteCActionPerformed(evt);
             }
         });
 
@@ -148,51 +224,51 @@ public class PlatosFuertes extends javax.swing.JFrame {
         jLabel14.setText("$180");
         jLabel14.setOpaque(true);
 
-        jCheckBox5.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox5.setText("AGREGAR");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        FileteA.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        FileteA.setText("AGREGAR");
+        FileteA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                FileteAActionPerformed(evt);
             }
         });
 
-        jCheckBox6.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox6.setText("AGREGAR");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+        PescadoR.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        PescadoR.setText("AGREGAR");
+        PescadoR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
+                PescadoRActionPerformed(evt);
             }
         });
 
-        jCheckBox7.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox7.setText("AGREGAR");
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+        PescadoE.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        PescadoE.setText("AGREGAR");
+        PescadoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
+                PescadoEActionPerformed(evt);
             }
         });
 
-        jCheckBox8.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox8.setText("AGREGAR");
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+        PescadoEM.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        PescadoEM.setText("AGREGAR");
+        PescadoEM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
+                PescadoEMActionPerformed(evt);
             }
         });
 
-        jCheckBox9.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox9.setText("AGREGAR");
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
+        Mojarra.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Mojarra.setText("AGREGAR");
+        Mojarra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
+                MojarraActionPerformed(evt);
             }
         });
 
-        jCheckBox10.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox10.setText("AGREGAR");
-        jCheckBox10.addActionListener(new java.awt.event.ActionListener() {
+        Piña.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Piña.setText("AGREGAR");
+        Piña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox10ActionPerformed(evt);
+                PiñaActionPerformed(evt);
             }
         });
 
@@ -200,50 +276,62 @@ public class PlatosFuertes extends javax.swing.JFrame {
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fish.png"))); // NOI18N
 
+        jButton1.setText("Agregar Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addGap(107, 107, 107)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox10)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jCheckBox9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Piña)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Mojarra, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(PescadoEM, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(PescadoE, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(PescadoR, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(FileteA, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(FileteF, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(FileteC, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)))
+                        .addGap(225, 225, 225)
+                        .addComponent(jButton1)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,57 +339,87 @@ public class PlatosFuertes extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel19))
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel1)
                     .addComponent(jLabel18))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox3)
+                    .addComponent(FileteF)
                     .addComponent(jLabel11)
                     .addComponent(jLabel4))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox4)
+                    .addComponent(FileteC)
                     .addComponent(jLabel2)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox5)
+                    .addComponent(FileteA)
                     .addComponent(jLabel3)
                     .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox6)
+                    .addComponent(PescadoR)
                     .addComponent(jLabel12)
                     .addComponent(jLabel5))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox7)
+                    .addComponent(PescadoE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox8)
+                        .addComponent(PescadoEM)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox9)
+                            .addComponent(Mojarra)
                             .addComponent(jLabel17)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox10)
+                            .addComponent(Piña)
                             .addComponent(jLabel16)
                             .addComponent(jLabel9)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
                         .addComponent(jLabel7)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Menú");
+        jMenu5.setText("Inicio");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu5);
+
+        jMenu1.setText("Entradas");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Bebidas");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Cocteles");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -320,37 +438,61 @@ public class PlatosFuertes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
+    private void FileteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileteCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_FileteCActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void FileteAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileteAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_FileteAActionPerformed
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+    private void PescadoRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PescadoRActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+    }//GEN-LAST:event_PescadoRActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
+    private void PescadoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PescadoEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
+    }//GEN-LAST:event_PescadoEActionPerformed
 
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
+    private void PescadoEMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PescadoEMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
+    }//GEN-LAST:event_PescadoEMActionPerformed
 
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
+    private void MojarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MojarraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
+    }//GEN-LAST:event_MojarraActionPerformed
 
-    private void jCheckBox10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox10ActionPerformed
+    private void PiñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PiñaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox10ActionPerformed
+    }//GEN-LAST:event_PiñaActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void FileteFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileteFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_FileteFActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        this.dispose();
+        new Bebidas().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        this.dispose();
+        new PantallaPrincipal().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        this.dispose();
+        new Entradas().setVisible(true);        // TODO add your handling code here:(
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.dispose();
+        new Cocteles().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Seleccion();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,14 +531,15 @@ public class PlatosFuertes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
-    private javax.swing.JCheckBox jCheckBox9;
+    private javax.swing.JCheckBox FileteA;
+    private javax.swing.JCheckBox FileteC;
+    private javax.swing.JCheckBox FileteF;
+    private javax.swing.JCheckBox Mojarra;
+    private javax.swing.JCheckBox PescadoE;
+    private javax.swing.JCheckBox PescadoEM;
+    private javax.swing.JCheckBox PescadoR;
+    private javax.swing.JCheckBox Piña;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -417,6 +560,9 @@ public class PlatosFuertes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

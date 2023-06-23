@@ -4,15 +4,41 @@
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jMenu5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Inicio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu5MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu5ActionPerformed"/>
+          </Events>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" value="Entradas"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" value="Cocteles"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu2ActionPerformed"/>
+          </Events>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Platos Fuertes"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu3MouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu3ActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>
@@ -23,7 +49,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -69,43 +95,51 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel8" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="jLabel1" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="jLabel4" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="jLabel5" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel8" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                                          <Component id="jLabel11" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                                          <Component id="jLabel12" alignment="1" min="-2" pref="77" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel10" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                      <Component id="jLabel9" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="Refresco" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Agua" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Cerveza" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Mojito" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Bebida" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="66" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLabel10" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" pref="264" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="66" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" pref="264" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="65" max="32767" attributes="0"/>
@@ -125,12 +159,12 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Refresco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="Agua" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -138,26 +172,28 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Cerveza" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Mojito" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Bebida" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="188" max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -253,7 +289,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="Refresco">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ebrima" size="12" style="2"/>
@@ -261,7 +297,7 @@
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="Agua">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ebrima" size="12" style="2"/>
@@ -269,10 +305,10 @@
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AguaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+        <Component class="javax.swing.JCheckBox" name="Cerveza">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ebrima" size="12" style="2"/>
@@ -280,10 +316,10 @@
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CervezaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+        <Component class="javax.swing.JCheckBox" name="Mojito">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ebrima" size="12" style="2"/>
@@ -291,7 +327,7 @@
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+        <Component class="javax.swing.JCheckBox" name="Bebida">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Ebrima" size="12" style="2"/>
@@ -299,7 +335,7 @@
             <Property name="text" type="java.lang.String" value="AGREGAR"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BebidaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel18">
@@ -318,7 +354,7 @@
               <Font name="Ebrima" size="36" style="3"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Cocteles"/>
+            <Property name="text" type="java.lang.String" value="Bebidas"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -328,6 +364,14 @@
               <Image iconType="3" name="/Imagenes/fish.png"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar Pedido"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

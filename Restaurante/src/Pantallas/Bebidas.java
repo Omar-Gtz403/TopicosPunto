@@ -1,14 +1,65 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Pantallas;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author anton
  */
 public class Bebidas extends javax.swing.JFrame {
+
+    
+    public String user = "root";
+    public String pwd = "";
+    public String url = "jdbc:mysql://localhost/restaurant";
+    public String driver = "com.mysql.cj.jdbc.Driver";
+    Connection conn = null;
+    Statement stmt = null;
+
+    public void Seleccion() {
+        try {
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url, user, pwd);
+            System.out.println("Conexion exitosa");
+            if (Refresco.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (1, 'Refresco', 20)";
+                stmt.executeUpdate(query1);
+                Refresco.setSelected(false);
+                
+            }
+            if (Agua.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (2, 'Agua Fresca', 30)";
+                stmt.executeUpdate(query1);
+                Agua.setSelected(false);
+            }
+            if (Cerveza.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (3, 'Cerveza', 60)";
+                stmt.executeUpdate(query1);
+                Cerveza.setSelected(false);
+            }
+            if (Mojito.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (4, 'Mojito', 80)";
+                stmt.executeUpdate(query1);
+                Mojito.setSelected(false);
+            }
+            if (Bebida.isSelected()) {
+                stmt = (Statement) conn.createStatement();
+                String query1 = "INSERT INTO pedidos " + "VALUES (5, 'Bebida de la casa', 60)";
+                stmt.executeUpdate(query1);
+                Bebida.setSelected(false);
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+
+    }
 
     /**
      * Creates new form Bebidas
@@ -37,17 +88,20 @@ public class Bebidas extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
+        Refresco = new javax.swing.JCheckBox();
+        Agua = new javax.swing.JCheckBox();
+        Cerveza = new javax.swing.JCheckBox();
+        Mojito = new javax.swing.JCheckBox();
+        Bebida = new javax.swing.JCheckBox();
         jLabel18 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,33 +148,33 @@ public class Bebidas extends javax.swing.JFrame {
         jLabel12.setText("$60");
         jLabel12.setOpaque(true);
 
-        jCheckBox1.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox1.setText("AGREGAR");
+        Refresco.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Refresco.setText("AGREGAR");
 
-        jCheckBox2.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox2.setText("AGREGAR");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        Agua.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Agua.setText("AGREGAR");
+        Agua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                AguaActionPerformed(evt);
             }
         });
 
-        jCheckBox3.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox3.setText("AGREGAR");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        Cerveza.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Cerveza.setText("AGREGAR");
+        Cerveza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                CervezaActionPerformed(evt);
             }
         });
 
-        jCheckBox4.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox4.setText("AGREGAR");
+        Mojito.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Mojito.setText("AGREGAR");
 
-        jCheckBox5.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
-        jCheckBox5.setText("AGREGAR");
-        jCheckBox5.addActionListener(new java.awt.event.ActionListener() {
+        Bebida.setFont(new java.awt.Font("Ebrima", 2, 12)); // NOI18N
+        Bebida.setText("AGREGAR");
+        Bebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox5ActionPerformed(evt);
+                BebidaActionPerformed(evt);
             }
         });
 
@@ -129,47 +183,59 @@ public class Bebidas extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(232, 147, 207));
         jLabel7.setFont(new java.awt.Font("Ebrima", 3, 36)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Cocteles");
+        jLabel7.setText("Bebidas");
         jLabel7.setOpaque(true);
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fish.png"))); // NOI18N
+
+        jButton1.setText("Agregar Pedido");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel19)))
+                        .addGap(107, 107, 107)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Refresco)
+                                    .addComponent(Agua)
+                                    .addComponent(Cerveza)
+                                    .addComponent(Mojito)
+                                    .addComponent(Bebida))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(jButton1)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -184,38 +250,86 @@ public class Bebidas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox1)
+                            .addComponent(Refresco)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox2)
+                            .addComponent(Agua)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel9)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox3)
+                            .addComponent(Cerveza)
                             .addComponent(jLabel4)
                             .addComponent(jLabel10))
                         .addGap(14, 14, 14)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox4)
+                            .addComponent(Mojito)
                             .addComponent(jLabel5)
                             .addComponent(jLabel11))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox5)
+                            .addComponent(Bebida)
                             .addComponent(jLabel6)
                             .addComponent(jLabel12)))
                     .addComponent(jLabel8))
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(128, 128, 128))
         );
 
-        jMenu1.setText("File");
+        jMenu5.setText("Inicio");
+        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
+            }
+        });
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu5);
+
+        jMenu1.setText("Entradas");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Cocteles");
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Platos Fuertes");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -235,24 +349,80 @@ public class Bebidas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void AguaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AguaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_AguaActionPerformed
 
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+    private void CervezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CervezaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
+    }//GEN-LAST:event_CervezaActionPerformed
 
-    private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
+    private void BebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BebidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox5ActionPerformed
+    }//GEN-LAST:event_BebidaActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        this.dispose();
+        new PantallaPrincipal().setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        this.dispose();
+        new Entradas().setVisible(true);
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        new Cocteles().setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        new PlatosFuertes().setVisible(true);
+        this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
+        this.dispose();
+        new PantallaPrincipal().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        this.dispose();
+        new Entradas().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        this.dispose();
+        new Cocteles().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        this.dispose();
+        new PlatosFuertes().setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Seleccion();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        // new Bebidas().conectar();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -285,11 +455,12 @@ public class Bebidas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox Agua;
+    private javax.swing.JCheckBox Bebida;
+    private javax.swing.JCheckBox Cerveza;
+    private javax.swing.JCheckBox Mojito;
+    private javax.swing.JCheckBox Refresco;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -305,6 +476,8 @@ public class Bebidas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

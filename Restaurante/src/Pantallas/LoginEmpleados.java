@@ -5,7 +5,9 @@
 package Pantallas;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import java.sql.*;
 
 /**
  *
@@ -18,6 +20,60 @@ public class LoginEmpleados extends javax.swing.JFrame {
      */
     public LoginEmpleados() {
         initComponents();
+    }
+    public String bd = "escuela";
+    public String user = "root";
+    public String pwd = "";
+    public String url = "jdbc:mysql://localhost/restaurant";
+    public String driver = "com.mysql.cj.jdbc.Driver";
+    Connection conn = null;
+    Statement stmt = null;
+
+    public Connection conectar() {
+        try {
+            Class.forName(driver);
+            conn = (Connection) DriverManager.getConnection(url, user, pwd);
+            System.out.println("Conexion exitosa");
+            stmt = (Statement) conn.createStatement();
+            String query1 = "DELETE FROM pedidos";
+            stmt.executeUpdate(query1);
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+        return conn;
+    }
+
+    public void ingresar() {
+        Connection con1 = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String User = txtUsuario.getText();
+        String Pass = jpassClave.getText();
+        if (User.equals("") || Pass.equals("")) {
+            btnIngresar.setBackground(Color.red);
+            JOptionPane.showMessageDialog(this, "Uno o mas campos estan vacios");
+
+        } else {
+            try {
+                con1 = conectar();
+                pst = con1.prepareStatement("select username, pass from usuarios where username='" + User
+                        + "'and pass='" + Pass + "'");
+                rs = pst.executeQuery();
+                if (rs.next()) {
+
+                    this.dispose();
+                    btnIngresar.setBackground(Color.green);
+                    new PantallaPrincipal().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Credenciales incorrectas");
+                    btnIngresar.setBackground(Color.red);
+                }
+            } catch (SQLException e) {
+                System.err.print(e.toString());
+                JOptionPane.showMessageDialog(this, "Ocurrio un error");
+                btnIngresar.setBackground(Color.red);
+            }
+        }
     }
 
     /**
@@ -71,6 +127,11 @@ public class LoginEmpleados extends javax.swing.JFrame {
 
         btnIngresar.setFont(new java.awt.Font("Ebrima", 3, 14)); // NOI18N
         btnIngresar.setText("Aceptar");
+        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresarMouseClicked(evt);
+            }
+        });
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
@@ -136,21 +197,15 @@ public class LoginEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       btnIngresar.setBackground(Color.red);
-        char clave[] = jpassClave.getPassword();
-        String clavedef = new String(clave);
 
-        if (txtUsuario.getText().equals("Administracion") && clavedef.equals("12345")) {
-            this.dispose();
-            JOptionPane.showMessageDialog(null, "Bienvenido\n" + "Has ingresado satisfactoriamente al sistema", "Mensaje de Bienvenida", JOptionPane.INFORMATION_MESSAGE);
-            PantallaPrincipal formformulario1 = new PantallaPrincipal();
-            formformulario1.setVisible(true);
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Acceso denegado:\n" + "Porfavor ingrese un usuario y/o contraseña correctos", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
-
-        }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+        if (MouseEvent.BUTTON1 == evt.getButton()) {
+            ingresar();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIngresarMouseClicked
 
     /**
      * @param args the command line arguments
